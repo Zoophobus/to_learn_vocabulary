@@ -116,11 +116,21 @@ class Learn(View):
     current_translation = None
     current = None
     def get(self,request):
-        if 'start' in request.GET:
+        print(request.GET)
+        if 'return' in request.GET:
+            finished = True
+            latest = Translation.objects.order_by('-creation_date')[:5]
+            translations = ', '.join([t.english.value + " - " + t.dutch.value for t in latest])
+            return HttpResponseRedirect(reverse('index'),{
+                'english' : EnglishForm(request.GET),
+                'dutch' : DutchForm(request.GET),
+                'group' : TranslationGroupForm(request.GET),
+                'recent' : translations,
+                })
+        elif 'start' in request.GET:
             if self.finished:
                 if len(request.GET.getlist('translation_list')) > 0:
                     for group in request.GET.getlist('translation_list'):
-                        print(group)
                         self.toLearn += list(Translation.objects.filter(translation_group__groupName=group))
                 elif 'date' in request.GET:
                     upperDate =  datetime.date.today().year.__str__() + "-" + datetime.date.today().month.__str__() +'-'+ str(datetime.date.today().day+1)
@@ -236,7 +246,17 @@ class Test(View):
     successes=0
     attempts=0
     def get(self,request):
-        if 'start' in request.GET:
+        if 'return' in request.GET:
+            finished = True
+            latest = Translation.objects.order_by('-creation_date')[:5]
+            translations = ', '.join([t.english.value + " - " + t.dutch.value for t in latest])
+            return HttpResponseRedirect(reverse('index'),{
+                'english' : EnglishForm(request.GET),
+                'dutch' : DutchForm(request.GET),
+                'group' : TranslationGroupForm(request.GET),
+                'recent' : translations,
+                })
+        elif 'start' in request.GET:
             self.attempts = 0
             self.successes = 0
             if len(request.GET.getlist('translation_list')) > 0:
