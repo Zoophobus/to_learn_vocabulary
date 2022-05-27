@@ -116,9 +116,8 @@ class Learn(View):
     current_translation = None
     current = None
     def get(self,request):
-        print(request.GET)
         if 'return' in request.GET:
-            finished = True
+            self.finished = True
             latest = Translation.objects.order_by('-creation_date')[:5]
             translations = ', '.join([t.english.value + " - " + t.dutch.value for t in latest])
             return HttpResponseRedirect(reverse('index'),{
@@ -129,6 +128,7 @@ class Learn(View):
                 })
         elif 'start' in request.GET:
             if self.finished:
+                self.toLearn = list()
                 if len(request.GET.getlist('translation_list')) > 0:
                     for group in request.GET.getlist('translation_list'):
                         self.toLearn += list(Translation.objects.filter(translation_group__groupName=group))
@@ -247,7 +247,6 @@ class Test(View):
     attempts=0
     def get(self,request):
         if 'return' in request.GET:
-            finished = True
             latest = Translation.objects.order_by('-creation_date')[:5]
             translations = ', '.join([t.english.value + " - " + t.dutch.value for t in latest])
             return HttpResponseRedirect(reverse('index'),{
@@ -259,6 +258,7 @@ class Test(View):
         elif 'start' in request.GET:
             self.attempts = 0
             self.successes = 0
+            self.vocabularTestList = list()
             if len(request.GET.getlist('translation_list')) > 0:
                 for group in request.GET.getlist('translation_list'):
                     self.vocabularTestList += list(Translation.objects.filter(translation_group__groupName=group))
