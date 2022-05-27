@@ -1,0 +1,134 @@
+
+body {
+    margin-left: 3%; margin-right: 3%;
+    background-color: #EEEEFF;
+}
+
+h3 {
+}
+
+div.grid-index {
+    display: grid;
+    grid-template-areas:
+    'add links'
+    'list list';
+    grid-gap: 10px;
+    background-color: #DDDDEE;
+    padding: 10px;
+    border-style: inset;
+    border-width: thin;
+}
+
+div.grid-index > div {
+    padding: 60px 0;
+    text-align: center;
+    border-style: outset;
+    background-color: #FEFEFE;
+    border-width: thin;
+}
+
+div.index-add {
+    grid-area: add;
+}
+
+div.index-links {
+    grid-area: links;
+}
+
+div.index-list {
+    grid-area: list;
+}
+
+
+div.learn-grid {
+    display: grid;
+    grid-template-areas:
+    'translation translation learning-options'
+    'translation translation learning-extra';
+    grid-gap: 10px;
+    background-color: #DDDDEE;
+    padding: 10px;
+    border-style: inset;
+    border-width: thin;
+}
+
+div.learn-grid > div {
+    padding: 60px 0;
+    text-align: center;
+    border-style: outset;
+    background-color: #FEFEFE;
+    border-width: thin;
+}
+
+
+
+div.learn-translation {
+    grid-area: translation;
+}
+
+div.learn-options {
+    grid-area: learning-options;
+}
+
+div.learn-extra {
+    grid-area: learning-extra;
+}
+
+div.test-grid {
+    display: grid;
+    grid-template-areas:
+    'test test-options'
+    'test test-results';
+    grid-gap: 10px;
+    background-color: #DDDDEE;
+    padding: 10px;
+    border-style: inset;
+    border-width: thin;
+}
+
+div.test-grid > div {
+    padding: 60px 0;
+    text-align: center;
+    border-style: outset;
+    background-color: #FEFEFE;
+    border-width: thin;
+}
+
+div.test-test {
+    grid-area: test;
+}
+
+div.test-options {
+    grid-area: test-options;
+}
+
+div.test-results {
+    grid-area: test-results;
+}
+
+div.remove-grid {
+    display: grid;
+    grid-template-areas:
+    'entries groups';
+    grid-gap: 10px;
+    background-color: #DDDDEE;
+    padding: 10px;
+    border-style: inset;
+    border-width: thin;
+}
+
+div.remove-grid > div {
+    padding: 60px 0;
+    text-align: center;
+    border-style: outset;
+    background-color: #FEFEFE;
+    border-width: thin;
+}
+
+div.groups {
+    grid-area: groups;
+}
+
+div.entries {
+    grid-area: entries;
+}

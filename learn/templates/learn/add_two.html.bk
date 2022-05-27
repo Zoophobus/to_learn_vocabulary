@@ -1,0 +1,56 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'learn/style.css' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> The vocabulary </title>
+    </head>
+    <body>
+        <div class="grid-index">
+            <div class="index-add">
+                <h3> Add translations to the database! </h3>
+                <!-- the div region for adding translations -->
+
+                <form action="/add_two/" method="POST">
+                    {% csrf_token %}
+                    <table>
+                        {{ translation_form.as_table }}
+                    </table>
+                    <table>
+                        {{ group.as_table }}
+                    </table>
+                    <input type="submit" value="Add">
+
+                </form>
+
+            </div>
+
+            <div class="index-links">
+                <!-- div region for navigation links -->
+<!--                <form action="/options/" method="POST">
+                    {% csrf_token %}
+                    <input type="submit" name="learn_vocabulary" value="Learn your vocabulary">
+                    <input type="submit" name="test_vocabulary" value="Test your vocabulary">
+                    <input type="submit" name="remove_translation" value="Remove a translation">
+</form> -->
+            </div>
+
+            <div class="index-list">
+                <!-- div region for the last added translations -->
+                {% if recent %}
+                    <ul>
+                        {% for translation in recent %}
+                        <li> {{ translation }} </li>
+                        {% endfor %}
+                    </ul>
+                {% else %}
+                    <p> No translations are available </p>
+                {% endif %}
+            </div>
+        </div> <!-- end of grid-index div -->
+    </body>
+</html>
+

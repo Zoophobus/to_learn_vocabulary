@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'learn/style.css' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> Removing a translation </title>
+    </head>
+    <body>
+        <div class="remove-grid">
+            <div class="entries">
+
+                <form action="/delete/" method="POST" name="deletion">
+                    {% csrf_token %}
+                    {{ everything }}
+                    <input type="submit" name="delete" value="Delete">
+                </form>
+            </div>
+            
+            <div class="groups">
+                    <form action="/" method="GET" name="back_to_the_homepage">
+                        <input type="submit" name="return" value="Return">
+                    </form>
+<!--                <form action="/group/" method="GET" name="grouping">
+                    {{ by_groups }}
+                    <input type="submit" name="group" value="Select">
+                </form>
+-->
+            </div>
+
+        </div>
+    </body>
+</html>

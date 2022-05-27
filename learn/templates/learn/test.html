@@ -1,0 +1,86 @@
+<!DOCTYPE HTML>
+
+<html>
+    <head>
+        {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'learn/style.css' %}">
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width,initial-scale=1">
+        <title> Testing your vocabulary </title>
+    </head>
+
+         <div class="learn-grid">
+            <div class="translation">
+                {% if response %}
+                    {% if good_response %}
+                        <!-- The right answer has been provided -->
+                        <p> The translation of <span style="text-decoration: underline;"> {{ translation }} </span> is <span style="text-decoration: underline;"> {{ response }}</span> </p>
+                        {% if alternatives %}
+                            <p> additional translations are: </p>
+                            {% for alternative in alternatives %}
+                                <p> {{ alternative }} </p> 
+                            {% endfor %}
+                        {% endif %}
+                    {% elif good_response == False %}
+                        <!-- We got the wrong answer -->
+                        <p> The answer for <span style="text-decoration: underline;"> {{ translation }} </span> is incorrect </p>
+                        {% if alternatives %}
+                            <p> the relevant data entries are: <p>
+                            {% for alternative in alternatives %}
+                                <p> {{ alternative }} </p>
+                            {% endfor %}
+                        {% endif %}
+                    {% else %}
+                        <!-- We need the form for the user to provide the answer -->
+                        <p> What is the translation for <span style="text-decoration: underline;">{{ translation }}</span>? </p>
+                        <form action="/test/" method="GET" name="learn">
+                            {{ response }}
+                            <input type="submit" name="check" value="Check">
+                        </form>
+
+                    {% endif %}
+                {% elif completed %}
+                    <!-- should print out some stats -->
+                    <p> {{ successes }} out of {{ tried }} answers were correct! </p>
+                {% endif %}
+
+            </div>
+            <div class="learning-options">
+                {% if completed == True %}
+                    <form action="/test/" method="GET" name="learning_conditions">
+                        <ul>
+                            {{ by_groups.as_ul }}
+                        </ul>
+                        {{ date_form }}
+                        <input type="submit" name="start" value="Start">
+                    </form>
+                    <form action="/" method="GET" name="back_to_the_homepage">
+                        <input type="submit" name="return" value="Return">
+                    </form>
+                {% elif date_form %}
+                    <form action="/test/" method="GET" name="learning_conditions">
+                        <ul>
+                            {{ by_groups.as_ul }}
+                        </ul>
+                        {{ date_form }}
+                        <input type="submit" name="start" value="Start">
+                    </form>
+                    <form action="/" method="GET" name="back_to_the_homepage">
+                        <input type="submit" name="return" value="Return">
+                    </form>
+                {% else %}
+                    <form action="/test/" method="GET" name="next_vocabulary">
+                        <input type="submit" name="next" value="Next!">
+                        <input type="submit" name="finish" value="Finish the test!">
+                    </form>
+                    <form action="/" method="GET" name="back_to_the_homepage">
+                        <input type="submit" name="return" value="Return">
+                    </form>
+                {% endif %}
+            </div>
+            <div class="learning-extra">
+            </div>
+        </div>
+   <body>
+    </body>
+</html>
