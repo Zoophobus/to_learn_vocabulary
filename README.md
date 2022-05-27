@@ -1,8 +1,7 @@
 # to_learn_vocabulary
 A Python Django project that provides a simple interface and databases for learning vocabulary
 
-# The basic premise of this is that to provide a simple system and interface using django
-# for learning vocabulary. The requirements for this are: 
+# The basic premise of this is that to provide a simple system and interface using django for learning vocabulary. The requirements for this are: 
   - multiple translations need to be allowed
   - categorisation of the vocabulary lists for learning is needed
   - specific translations can fall into multiple categories
