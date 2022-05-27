@@ -3,24 +3,24 @@ A Python Django project that provides a simple interface and databases for learn
 
 # The basic premise of this is that to provide a simple system and interface using django
 # for learning vocabulary. The requirements for this are: 
-  # multiple translations need to be allowed
-  # categorisation of the vocabulary lists for learning is needed
-  # specific translations can fall into multiple categories
-  # need to be able to remove/delete translations
+  - multiple translations need to be allowed
+  - categorisation of the vocabulary lists for learning is needed
+  - specific translations can fall into multiple categories
+  - need to be able to remove/delete translations
 
-# All of these requirements are met in the provided codebase. An additional feature would be
-# to add greater flexibility to add translations (also a better form for doing so) and a more
-# powerful system for removing translations (removing whole categories and filtering the lists 
-# for specified categories)
+# All of these requirements are met in the provided codebase. 
+An additional feature would be to add greater flexibility to add translations (also a better 
+form for doing so) and a more powerful system for removing translations (removing whole 
+categories and filtering the lists for specified categories)
 
 # NOTE
-# this is rough and ready, testing is not provided and has not been performed beyond the basic 
-# efforts of "getting it to work". This is a poor approach to use and is a bad example, but this
-# is small, simple and mundane. It's mainly here to help my partner learn Dutch vocabulary, like
-# I have been using this myself!!
+this is rough and ready, testing is not provided and has not been performed beyond the basic 
+efforts of "getting it to work". This is a poor approach to use and is a bad example, but this
+is small, simple and mundane. It's mainly here to help my partner learn Dutch vocabulary, like
+I have been using this myself!!
 
 
-#INSTALLATION
+# INSTALLATION
 
 For installation Python and Python Django are required, dependencies should be met from the
 supplied libraries. For this it is of course recommended to create a container (`python -m venv 
@@ -57,6 +57,7 @@ the app url, this can be done by finding the `urlpatterns` section (list/array) 
 Finally, before you run the app the app databases need to be created. To do this you need to execute the django
 command by running `python manage.py migrate` from within the django environment.
 
+# Running!
 At this point to run this you need to run the django server, which after loading the django environment (`source
 path/to/VIRTUALENV/bin/activate`) can be done by executing `python manage.py runserver` from the location of the
 python project. Then connect to the link with your favourite browser (either right click on the address `http://111.0.0.1:8000/`,
